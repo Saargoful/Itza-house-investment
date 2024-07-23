@@ -1,0 +1,222 @@
+body.custom-background {
+    height: 100%;
+    background-image: url('../images/hero_1.jpg'); /* Actualiza la ruta de la imagen si es necesario */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Fija la imagen de fondo */
+    position: relative;
+    font-family: 'DM Sans', sans-serif; /* Asegúrate de que se use la misma fuente */
+}
+
+body.custom-background::before {
+    content: "";
+    position: fixed; /* Cambia absolute a fixed */
+    top: 0;
+    left: 0;
+    width: 100%; /* Asegura que cubra todo el ancho */
+    height: 100%; /* Asegura que cubra toda la altura */
+    background: rgba(0, 0, 0, 0.5); /* Oscurece la imagen de fondo al 50% */
+    z-index: -1; /* Asegúrate de que esté detrás del contenido */
+}
+
+.dashboard-container {
+    position: relative;
+    z-index: 2; /* Asegúrate de que el contenido esté por encima del fondo oscuro */
+    margin-top: 15vh; /* Ajusta la posición del contenedor principal */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    border-radius: 10px;
+}
+
+.dashboard-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dashboard-header {
+    color: #333; /* Color del texto del encabezado */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.add-property-btn {
+    display: flex;
+    align-items: center;
+    background-color: #007bff; /* Color del botón */
+    color: #fff; /* Color del texto del botón */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.add-property-btn i {
+    margin-right: 5px; /* Espacio entre el ícono y el texto */
+}
+
+.property-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.property-item {
+    display: flex;
+    justify-content: space-between; /* Alinea los elementos al inicio y al final */
+    align-items: flex-start; /* Alinea los elementos en la parte superior */
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.property-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.property-details {
+    flex: 1; /* Ocupa todo el espacio disponible */
+}
+
+.property-details h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.property-details p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.property-actions {
+    display: flex;
+    flex-direction: column; /* Alinea los botones en columna */
+    align-items: flex-end; /* Alinea los botones a la derecha */
+}
+
+.property-actions .btn {
+    margin-bottom: 5px; /* Espacio entre los botones */
+    display: inline-block; /* Asegura que los botones estén uno al lado del otro en pantallas pequeñas */
+    margin-right: 5px; /* Espacio entre botones en pantallas pequeñas */
+}
+
+.modal-header .btn-close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #000;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .property-actions {
+        flex-direction: row; /* Alinea los botones en fila */
+        align-items: center; /* Centra verticalmente los botones */
+    }
+
+    .btn-action {
+        width: auto; /* Vuelve al ancho automático para botones en fila */
+        margin-right: 5px; /* Espacio entre los botones */
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .add-property-btn {
+        margin-top: 10px;
+    }
+}
+
+
+#addPropertyModal .modal-body {
+    max-height: calc(100vh - 200px); /* Altura máxima del cuerpo del modal */
+    overflow-y: auto; /* Añade scroll vertical cuando el contenido es largo */
+}
+
+#addPropertyModal .form-control {
+    margin-bottom: 10px; /* Espacio entre campos */
+}
+.modal-dialog {
+    position: relative;
+    margin: auto;
+    width: 80%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    top: 50%; /* Posición central vertical */
+    transform: translateY(-50%); /* Ajuste para centrar */
+}
+.modal-dialog {
+    max-width: 800px; /* Ajusta este valor según tus necesidades */
+}
+
+.modal-content {
+    max-height: 80vh; /* Ajusta este valor según tus necesidades */
+    overflow-y: auto;
+}
+
+.modal-header, .modal-footer {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+}
+/* Estilos para el modal de agregar propiedad */
+#addPropertyModal .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#addPropertyModal .form-row .form-group {
+    flex: 1;
+    min-width: calc(50% - 10px);
+}
+
+#addPropertyModal .form-row.full-width .form-group {
+    flex: 1 1 100%;
+}
+
+#addPropertyModal .form-control {
+    width: 100%;
+}
+
+/* Ajustes para el diseño del modal */
+.modal-dialog {
+    max-width: 800px;
+    margin: 1.75rem auto;
+}
+
+.modal-content {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header,
+.modal-footer {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+}
+
+/* Media queries para diseño responsivo */
+@media (max-width: 768px) {
+    #addPropertyModal .form-row .form-group {
+        min-width: 100%;
+    }
+}
